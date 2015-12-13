@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SSNWSService" targetNamespace="http://ws.ssn/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://ws.ssn/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://ws.ssn/" schemaLocation="SSNWSService_schema1.xsd"></import>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="getUserDetailsResponse">
+    <wsdl:part name="parameters" element="tns:getUserDetailsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerUserResponse">
+    <wsdl:part name="parameters" element="tns:registerUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReservationsByFieldResponse">
+    <wsdl:part name="parameters" element="tns:getReservationsByFieldResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addFieldSportResponse">
+    <wsdl:part name="parameters" element="tns:addFieldSportResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createReportType">
+    <wsdl:part name="parameters" element="tns:createReportType">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFieldsByManagerEntity">
+    <wsdl:part name="parameters" element="tns:getFieldsByManagerEntity">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addFieldSport">
+    <wsdl:part name="parameters" element="tns:addFieldSport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSportsResponse">
+    <wsdl:part name="parameters" element="tns:getSportsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createManagerEntityResponse">
+    <wsdl:part name="parameters" element="tns:createManagerEntityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUserDetails">
+    <wsdl:part name="parameters" element="tns:getUserDetails">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSportResponse">
+    <wsdl:part name="parameters" element="tns:createSportResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getReservationsByField">
+    <wsdl:part name="parameters" element="tns:getReservationsByField">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addReservationResponse">
+    <wsdl:part name="parameters" element="tns:addReservationResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSports">
+    <wsdl:part name="parameters" element="tns:getSports">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addFieldResponse">
+    <wsdl:part name="parameters" element="tns:addFieldResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getManagerEntitiesResponse">
+    <wsdl:part name="parameters" element="tns:getManagerEntitiesResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateUser">
+    <wsdl:part name="parameters" element="tns:updateUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createReportTypeResponse">
+    <wsdl:part name="parameters" element="tns:createReportTypeResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateUserResponse">
+    <wsdl:part name="parameters" element="tns:updateUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addReservation">
+    <wsdl:part name="parameters" element="tns:addReservation">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createEvent">
+    <wsdl:part name="parameters" element="tns:createEvent">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getManagerEntitiesBySport">
+    <wsdl:part name="parameters" element="tns:getManagerEntitiesBySport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getManagerEntities">
+    <wsdl:part name="parameters" element="tns:getManagerEntities">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createManagerEntity">
+    <wsdl:part name="parameters" element="tns:createManagerEntity">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSport">
+    <wsdl:part name="parameters" element="tns:createSport">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addField">
+    <wsdl:part name="parameters" element="tns:addField">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createEventResponse">
+    <wsdl:part name="parameters" element="tns:createEventResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getManagerEntitiesBySportResponse">
+    <wsdl:part name="parameters" element="tns:getManagerEntitiesBySportResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="registerUser">
+    <wsdl:part name="parameters" element="tns:registerUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getFieldsByManagerEntityResponse">
+    <wsdl:part name="parameters" element="tns:getFieldsByManagerEntityResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="SSNWS">
+    <wsdl:operation name="registerUser">
+      <wsdl:input name="registerUser" message="tns:registerUser">
+    </wsdl:input>
+      <wsdl:output name="registerUserResponse" message="tns:registerUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getManagerEntities">
+      <wsdl:input name="getManagerEntities" message="tns:getManagerEntities">
+    </wsdl:input>
+      <wsdl:output name="getManagerEntitiesResponse" message="tns:getManagerEntitiesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addField">
+      <wsdl:input name="addField" message="tns:addField">
+    </wsdl:input>
+      <wsdl:output name="addFieldResponse" message="tns:addFieldResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSport">
+      <wsdl:input name="createSport" message="tns:createSport">
+    </wsdl:input>
+      <wsdl:output name="createSportResponse" message="tns:createSportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createManagerEntity">
+      <wsdl:input name="createManagerEntity" message="tns:createManagerEntity">
+    </wsdl:input>
+      <wsdl:output name="createManagerEntityResponse" message="tns:createManagerEntityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getManagerEntitiesBySport">
+      <wsdl:input name="getManagerEntitiesBySport" message="tns:getManagerEntitiesBySport">
+    </wsdl:input>
+      <wsdl:output name="getManagerEntitiesBySportResponse" message="tns:getManagerEntitiesBySportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSports">
+      <wsdl:input name="getSports" message="tns:getSports">
+    </wsdl:input>
+      <wsdl:output name="getSportsResponse" message="tns:getSportsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createReportType">
+      <wsdl:input name="createReportType" message="tns:createReportType">
+    </wsdl:input>
+      <wsdl:output name="createReportTypeResponse" message="tns:createReportTypeResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createEvent">
+      <wsdl:input name="createEvent" message="tns:createEvent">
+    </wsdl:input>
+      <wsdl:output name="createEventResponse" message="tns:createEventResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <wsdl:input name="addReservation" message="tns:addReservation">
+    </wsdl:input>
+      <wsdl:output name="addReservationResponse" message="tns:addReservationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationsByField">
+      <wsdl:input name="getReservationsByField" message="tns:getReservationsByField">
+    </wsdl:input>
+      <wsdl:output name="getReservationsByFieldResponse" message="tns:getReservationsByFieldResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFieldsByManagerEntity">
+      <wsdl:input name="getFieldsByManagerEntity" message="tns:getFieldsByManagerEntity">
+    </wsdl:input>
+      <wsdl:output name="getFieldsByManagerEntityResponse" message="tns:getFieldsByManagerEntityResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFieldSport">
+      <wsdl:input name="addFieldSport" message="tns:addFieldSport">
+    </wsdl:input>
+      <wsdl:output name="addFieldSportResponse" message="tns:addFieldSportResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <wsdl:input name="getUserDetails" message="tns:getUserDetails">
+    </wsdl:input>
+      <wsdl:output name="getUserDetailsResponse" message="tns:getUserDetailsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <wsdl:input name="updateUser" message="tns:updateUser">
+    </wsdl:input>
+      <wsdl:output name="updateUserResponse" message="tns:updateUserResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SSNWSServiceSoapBinding" type="tns:SSNWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="registerUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="registerUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="registerUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getManagerEntities">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getManagerEntities">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getManagerEntitiesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addField">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addField">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addFieldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createManagerEntity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createManagerEntity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createManagerEntityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSport">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createSport">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createSportResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getManagerEntitiesBySport">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getManagerEntitiesBySport">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getManagerEntitiesBySportResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addReservation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addReservation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addReservationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createEvent">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createEvent">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createEventResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createReportType">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createReportType">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createReportTypeResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSports">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSports">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSportsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="addFieldSport">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addFieldSport">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addFieldSportResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getFieldsByManagerEntity">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getFieldsByManagerEntity">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getFieldsByManagerEntityResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getReservationsByField">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getReservationsByField">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getReservationsByFieldResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUserDetails">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUserDetails">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUserDetailsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateUser">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateUser">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateUserResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="SSNWSService">
+    <wsdl:port name="SSNWSPort" binding="tns:SSNWSServiceSoapBinding">
+      <soap:address location="http://localhost:9090/SSNWSPort"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
