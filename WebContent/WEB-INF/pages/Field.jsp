@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="ssn.ws.Reservation"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,17 +12,34 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="../../js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap-datetimepicker.min.js"></script>
 <link rel="stylesheet"
 	href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-<link rel="stylesheet"
-	href="../../css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" 
+	href="${pageContext.request.contextPath}/css/bootstrap-datetimepicker.min.css">
 <script type="text/javascript">
-	function deleteModal(id){
+	function deleteModal(id,sport){
 		$("#selectedId").val(id);
+		if(sport){
+			$('#selectedId').attr('name', 'selectedSportId');
+			$('#modalTitle').html('Delete Sport');
+		}else{
+			$('#selectedId').attr('name', 'selectedReservationId');
+			$('#modalTitle').html('Delete Reservation');
+		}
 		$("#deleteModal").modal()
 	}
 </script>
+<style type="text/css">
+	.comfirmed {
+	    background-color:#A2ECA2 !important;
+	    color:black !important;
+	} 
+	.no-comfirmed {
+	    background-color:orange !important;
+	    color:black;
+	} 
+</style>
 </head>
 <body style="padding-top: 70px;">
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -46,12 +65,6 @@
 			</form>
 			<form class="navbar-form navbar-right" role="search"
 				onsubmit="return false;">
-				<c:if test="${mode == 'edit'}">
-					<div class="input-group" style="margin-right: 10px;">
-						<a id="newFieldButton" class="btn btn-success"
-							href="${hrefAddField}">Add Field</a>
-					</div>
-				</c:if>
 			</form>
 		</div>
 	</div>
@@ -148,7 +161,7 @@
 										<td>${entity.getSportName()}</td>
 										<td>${entity.getHourPrice()}</td>
 										<td>
-											<button type="button" class="btn btn-danger btn-sm" onclick="deleteModal('${loop.index}')">
+											<button type="button" class="btn btn-danger btn-sm" onclick="deleteModal('${loop.index}',true)">
 												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 											</button>
 										</td>
@@ -160,59 +173,70 @@
 				</table>
 			</div>
 			<div class="col-md-6">
-				<form method="post">
-					<fieldset>
-						<legend>Reservations: </legend>
-						<div class="row">
-							<div class="col-md-9">
-								<div class="well">
-								  <div id="datetimepicker1" class="input-append date">
-								    <input data-format="dd/MM/yyyy hh:mm:ss" type="text"></input>
-								    <span class="add-on">
-								      <i data-time-icon="icon-time" data-date-icon="icon-calendar">
-								      </i>
-								    </span>
-								  </div>
+				<c:choose>
+					<c:when test="${mode == 'edit'}">
+						<form method="post">
+							<fieldset>
+								<legend>Reservations: </legend>					
+								<div class="row">
+									<div class="col-md-8">
+										<input size="16" type="text" name="hourReservation" id="hourReservationInput" 
+											value="2012-06-15 14:45" readonly class="form_datetime form-control">
+									</div>
+									<div class="col-md-3">
+										<input type="number" class="form-control" name="minutes" id="minutesInput"
+											placeholder="Minutes" onkeydown="validateCharacter(event)" required>
+									</div>
+									<div class="col-md-1">
+										<button type="submit" class="btn btn-success">
+											<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+										</button>
+									</div>
 								</div>
-							</div>
-							<div class="col-md-2">
-								<input type="text" class="form-control" name="priceHour" id="sportPriceInput"
-									placeholder="Price/h" onkeydown="validateCharacter(event)" required>
-							</div>
-							<div class="col-md-1">
-								<button type="submit" class="btn btn-success addSport">
-									<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-								</button>
-							</div>
-						</div>
-					</fieldset>
-				</form>
-				<table id="reservationsTable" class="table table-striped">
-					<thead>
-						<tr>
-							<th class="col-md-1">Sport</th>
-							<th class="col-md-2">Price/hour</th>
-							<th class="col-md-1" style="width:1%;"></th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:choose>
-							<c:when test="${not empty entity}">
-								<c:forEach var="entity" items="${entity.getSports()}" varStatus="loop">
-									<tr>
-										<td>${entity.getSportName()}</td>
-										<td>${entity.getHourPrice()}</td>
-										<td>
-											<button type="button" class="btn btn-danger btn-sm" onclick="deleteModal('${loop.index}')">
-												<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-											</button>
-										</td>
-									</tr>
-								</c:forEach>
-							</c:when>
-						</c:choose>
-					</tbody>
-				</table>
+							</fieldset>
+						</form>
+						<table id="reservationsTable" class="table table-striped">
+							<thead>
+								<tr>
+									<th class="col-md-3">Date</th>
+									<th class="col-md-2">Duration</th>
+									<th class="col-md-1" style="width:1%;"></th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:choose>
+									<c:when test="${not empty reservations}">
+										<% ArrayList<Reservation> list =  (ArrayList<Reservation>)request.getAttribute("reservations");
+										for(Reservation r : list){ %>
+										<tr class="<%if(r.isConfirmed()){%>comfirmed<%}else{%>no-comfirmed<%}%>">
+											<td><%=r.toStartDate()%></td>
+											<td><%=r.getDurationMin()%></td>
+											<td>
+												<button type="button" class="btn btn-danger btn-sm" onclick="deleteModal('<%=list.indexOf(r)%>')">
+													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+												</button>
+											</td>
+										</tr>
+										<%} %>
+										<!--<c:forEach var="entity" items="${reservations}" varStatus="loop">
+											<tr>
+												<td>${reservation.toStartDate()}</td>
+												<td>${reservation.toEndDate()}</td>
+												<td>
+													<button type="button" class="btn btn-danger btn-sm" onclick="deleteModal('${loop.index}')">
+														<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+													</button>
+												</td>
+											</tr>
+										</c:forEach>-->
+									</c:when>
+								</c:choose>
+							</tbody>
+						</table>
+					</c:when>
+				</c:choose>
+			
+				
 			</div>
 		</div>
 	</div>
@@ -234,10 +258,10 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
-					<h4 class="modal-title">Delete Sport</h4>
+					<h4 class="modal-title" id="modalTitle"></h4>
 				</div>
 				<div class="modal-body">
-					<p>Are you sure?</p>
+					<p>Are you sure? To apply the changes, you must press the create or update button.</p>
 				</div>
 				<div class="modal-footer">
 					<form method="post">
@@ -245,7 +269,7 @@
 							<div class="col-md-12">
 								<button type="button" class="btn btn-default"
 									data-dismiss="modal">Cancel</button>
-								<input type="hidden" id="selectedId" name="selectedId">
+								<input type="hidden" id="selectedId">
 								<button type="submit" class="btn btn-danger">Delete</button>
 							</div>
 						</div>
@@ -285,11 +309,7 @@
 		event.preventDefault();
 		return false;
 	}
-	$(function() {
-	    $('#datetimepicker1').datetimepicker({
-	      language: 'pt-BR'
-	    });
-	  });
+	$(".form_datetime").datetimepicker({format: 'yyyy-mm-dd hh:ii'});
 </script>
 
 </html>

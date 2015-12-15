@@ -57,7 +57,7 @@ public class MainPageServlet extends BaseServlet {
 				request.setAttribute("messageType", "alert-success");
 			}else{
 				request.setAttribute("messageTitle", "Error");
-				request.setAttribute("messageText", "Error in delet");
+				request.setAttribute("messageText", "Error in delet, this entity may have associated fields or events");
 				request.setAttribute("messageType", "alert-danger");
 			}
 			
@@ -79,15 +79,6 @@ public class MainPageServlet extends BaseServlet {
     		// TODO enviar error
     	}
     		
-
-    	/*ManagerEntity m = new ManagerEntity();
-    	m.setIdManagerEntity(1);
-    	m.setName("GYM Tony");
-    	m.setAddress("Ca l'ample 19");
-    	m.setLatitude(90.2);
-    	m.setLongitude(1.09);
-    	
-    	managerEntityList.add(m);*/
     	request.setAttribute("managerEntities", managerEntityList);
     }
 }

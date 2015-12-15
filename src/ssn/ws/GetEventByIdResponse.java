@@ -3,20 +3,21 @@ package ssn.ws;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para createEvent complex type.
+ * <p>Clase Java para getEventByIdResponse complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="createEvent">
+ * &lt;complexType name="getEventByIdResponse">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://ws.ssn/}event" minOccurs="0"/>
+ *         &lt;element name="return" type="{http://ws.ssn/}result" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,35 +27,36 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "createEvent", propOrder = {
-    "arg0"
+@XmlType(name = "getEventByIdResponse", propOrder = {
+    "_return"
 })
-public class CreateEvent {
+public class GetEventByIdResponse {
 
-    protected Event arg0;
+    @XmlElement(name = "return")
+    protected Result _return;
 
     /**
-     * Obtiene el valor de la propiedad arg0.
+     * Obtiene el valor de la propiedad return.
      * 
      * @return
      *     possible object is
-     *     {@link Event }
+     *     {@link Result }
      *     
      */
-    public Event getArg0() {
-        return arg0;
+    public Result getReturn() {
+        return _return;
     }
 
     /**
-     * Define el valor de la propiedad arg0.
+     * Define el valor de la propiedad return.
      * 
      * @param value
      *     allowed object is
-     *     {@link Event }
+     *     {@link Result }
      *     
      */
-    public void setArg0(Event value) {
-        this.arg0 = value;
+    public void setReturn(Result value) {
+        this._return = value;
     }
 
 }

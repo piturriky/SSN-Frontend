@@ -1,6 +1,8 @@
 
 package ssn.ws;
 
+import java.util.Date;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlType;
@@ -50,6 +52,18 @@ public class Reservation {
     protected int idReservation;
     protected long startDate;
     protected int type;
+    
+    public String toStartDate(){
+		return new Date(startDate).toString(); 
+    }
+    
+    public String toEndDate(){
+		return new Date(endDate).toString(); 
+    }
+    
+    public String getDurationMin(){
+		return Long.toString((endDate - startDate)/(60*1000)); 
+    }
 
     /**
      * Obtiene el valor de la propiedad confirmed.

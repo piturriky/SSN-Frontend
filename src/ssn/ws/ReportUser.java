@@ -7,16 +7,16 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Clase Java para createEvent complex type.
+ * <p>Clase Java para reportUser complex type.
  * 
  * <p>El siguiente fragmento de esquema especifica el contenido que se espera que haya en esta clase.
  * 
  * <pre>
- * &lt;complexType name="createEvent">
+ * &lt;complexType name="reportUser">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="arg0" type="{http://ws.ssn/}event" minOccurs="0"/>
+ *         &lt;element name="arg0" type="{http://ws.ssn/}report" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -26,22 +26,22 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "createEvent", propOrder = {
+@XmlType(name = "reportUser", propOrder = {
     "arg0"
 })
-public class CreateEvent {
+public class ReportUser {
 
-    protected Event arg0;
+    protected Report arg0;
 
     /**
      * Obtiene el valor de la propiedad arg0.
      * 
      * @return
      *     possible object is
-     *     {@link Event }
+     *     {@link Report }
      *     
      */
-    public Event getArg0() {
+    public Report getArg0() {
         return arg0;
     }
 
@@ -50,10 +50,10 @@ public class CreateEvent {
      * 
      * @param value
      *     allowed object is
-     *     {@link Event }
+     *     {@link Report }
      *     
      */
-    public void setArg0(Event value) {
+    public void setArg0(Report value) {
         this.arg0 = value;
     }
 

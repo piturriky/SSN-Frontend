@@ -78,7 +78,7 @@ public class ManagerEntityServlet extends BaseServlet {
 				request.setAttribute("messageType", "alert-success");
 			}else{
 				request.setAttribute("messageTitle", "Error");
-				request.setAttribute("messageText", "This field may have associated reservations");
+				request.setAttribute("messageText", "This field may have associated reservations or sports");
 				request.setAttribute("messageType", "alert-danger");
 			}
 			String hrefAddField = hrefAddField_.concat(Integer.toString(entityId));
